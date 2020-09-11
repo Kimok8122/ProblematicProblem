@@ -16,7 +16,18 @@ namespace ProblematicProblem
             Random rng = new Random();
 
             Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ");
-            bool cont = bool.Parse(Console.ReadLine());
+            bool cont;
+
+            var contOutCome = Console.ReadLine().ToLower();
+
+            if (contOutCome == "yes")
+            {
+                cont = true;
+            }
+            else
+            {
+                cont = false;
+            }
 
             Console.WriteLine();
 
@@ -32,7 +43,7 @@ namespace ProblematicProblem
             Console.WriteLine();
 
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
-            bool seeList = bool.Parse(Console.ReadLine());
+            bool seeList = (Console.ReadLine().ToLower() == "sure") ? true : false;
 
             if (seeList)
             {
@@ -44,11 +55,13 @@ namespace ProblematicProblem
 
                 Console.WriteLine();
                 Console.Write("Would you like to add any activities before we generate one? yes/no: ");
-                bool addToList = bool.Parse(Console.ReadLine());
-                Console.WriteLine();
+                bool addToList = (Console.ReadLine().ToLower() == "yes") ? true : false;
+                
 
                 while (addToList)
                 {
+
+                    Console.WriteLine();
                     Console.Write("What would you like to add? ");
                     string userAddition = Console.ReadLine();
 
@@ -62,7 +75,7 @@ namespace ProblematicProblem
 
                     Console.WriteLine();
                     Console.WriteLine("Would you like to add more? yes/no: ");
-                    addToList = bool.Parse(Console.ReadLine());
+                    addToList = (Console.ReadLine().ToLower() == "yes") ? true : false;
                 }
             }
             
@@ -104,9 +117,10 @@ namespace ProblematicProblem
                     //string randomActivity = activities[randomNumber];
                 }
 
-                Console.Write($"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ");
                 Console.WriteLine();
-                cont = bool.Parse(Console.ReadLine());
+                Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
+                Console.WriteLine();
+                cont = (Console.ReadLine().ToLower() == "sure") ? true : false;
             }
         }
     }
